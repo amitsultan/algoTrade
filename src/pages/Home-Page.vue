@@ -11,9 +11,6 @@
     </div>
     <br><br>
     <div class="bottom">
-    <img class='gif' loading="lazy" src="../assets/celldeath.gif">
-
-    <img class='gif' loading="lazy"  src="../assets/calcium.gif">
     </div>
     <!--<video-player :options="videoOptions"/>-->
 </div>
