@@ -36,7 +36,7 @@
         </b-form-invalid-feedback>
       </b-form-group>
 
-      <b-button @click="onLogin"
+      <b-button 
         type="submit"
         variant="primary"
         style="width:100px;display:block;"
@@ -63,6 +63,11 @@
 </template>
 
 <script>
+let users = [{'email': 'manager@gmail.com',
+          'password': '1234',
+          'fname': 'ziv',
+          'lname': 'sultan',
+          'rank':'admin'}]
 import { required } from "vuelidate/lib/validators";
 export default {
   data() {
@@ -91,55 +96,39 @@ export default {
       return $dirty ? !$error : null;
     },
     async Login() {
-      try {
-        this.axios.defaults.withCredentials = true;
-        const fullNameResponse = await this.axios.post(
-          this.$root.API_BASE+"getFullNameByEmail",
-          {
-            email: this.form.email,
+      users = [{'email': 'manager@gmail.com',
+          'password': '1234',
+          'fname': 'ziv',
+          'lname': 'sultan',
+          'rank':'admin'}]
+        let email = this.form.email;
+        let password = this.form.password;
+        let isFound = false;
+        users.forEach(element => {
+          if(element.email == email && element.password == password){
+            this.$root.toast(
+              "successful",
+              "User successfully logged in",
+              "success"
+            );
+            isFound = true;
+            this.$root.store.login(email, element.fname, element.lname);
+            this.$router.push("/");
           }
-        );
-        const response = await this.axios.post(
-          this.$root.API_BASE+"Login",
-          {
-            email: this.form.email,
-            password: this.form.password,
-          }
-        );
-        if (response.status == 200 && fullNameResponse.status == 200) {
-          this.$root.toast(
-            "successful",
-            "User successfully logged in",
-            "success"
-          );
-          this.$root.store.login(this.form.email, fullNameResponse.data[0], fullNameResponse.data[1]);
-          this.clickButton = false;
-          this.$router.push("/");
-        } else {
-          this.clickButton = false;
-          this.$root.toast(
-            "Invalid credentials",
-            "email or password are incorrect",
-            "danger"
-          );
+        });
+        if(!isFound){
+          console.log("he")
+            this.$root.toast(
+              "Invalid credentials",
+              "Email or password are incorrect",
+              "danger"
+            );
         }
-      } catch (err) {
-        console.log(err);
-        this.clickButton = false;
-        this.$root.toast(
-          "Invalid credentials",
-          "email or password are incorrect",
-          "danger"
-        );
-      }
-
     },
     onLogin() {
       this.form.submitError = undefined;
-      this.clickButton = true;
       this.$v.form.$touch();
       if (this.$v.form.$anyError) {
-        this.clickButton = false;
         return;
       }
       this.Login();

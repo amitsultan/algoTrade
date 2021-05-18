@@ -7,8 +7,8 @@
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
           <b-nav-item active :to="{ name: 'main' }">Home</b-nav-item>
-          <b-nav-item :to="{ name: 'Experiments'}">Experiments</b-nav-item>
-          <b-nav-item :to="{ name: 'requestPage'}">Request-experiment</b-nav-item>
+          <b-nav-item :to="{ name: 'clinetRequests'}">Notifications</b-nav-item>
+          <b-nav-item :to="{ name: 'clinetRequestsS'}">NotificationsS</b-nav-item>
           <b-nav-item :to="{ name: 'AboutPage'}">About</b-nav-item>
           <b-nav-item :to="{ name: 'ContactPage'}">Contact</b-nav-item>
         </b-navbar-nav>
@@ -46,19 +46,11 @@ export default {
   },
   methods:{
     async Logout() {
-        this.axios.defaults.withCredentials = true;
-        const response = await this.axios.post(
-          this.$root.API_BASE+"signout"
-        );
-        if(response.status == 200){
           this.$root.store.logout();
           this.$root.toast("Logout", "User logged out successfully", "success");
           this.$router.push("/").catch(() => {
             this.$forceUpdate();
           });
-        }else{
-          this.$root.toast("Logout", "Failed to logout, please contact us", "danger");
-        }
       },
   }
 }
