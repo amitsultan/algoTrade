@@ -6,7 +6,9 @@ import VueRouter from "vue-router";
 import VueCookies from "vue-cookies";
 import routes from "./routes";
 import Vuelidate from "vuelidate";
+import Toasted from 'vue-toasted';
 
+Vue.use(Toasted)
 Vue.use(VueRouter);
 Vue.use(VueCookies);
 Vue.use(Vuelidate);

@@ -89,3 +89,20 @@ main {
   max-width: 40rem;
   padding: 1rem;
 }
+
+.notificationBell{
+  display: flex !important;
+  justify-content: space-around !important;
+  margin: auto !important;
+}
+
+.notificationBell_div{
+  display: flex !important;
+  justify-content: space-around !important;
+  margin: auto !important;
+}
+.notification_window_div{
+  position:absolute;
+  top:65px;
+  right: 60px;
+}

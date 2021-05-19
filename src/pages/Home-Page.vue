@@ -7,6 +7,7 @@
     Our cell tracking tool is a multi-purpose tool for various microscope images analysis.
     Our goal is to provide an easy way to detect certain states of cells or other moving organisms.
     Our tool will serve for phenomena as Cell Death and Calcium Signaling, hopefully for more in the future.
+    <b-button v-on:click='onClick'>דימוי נוטיפיקציה</b-button>
      <br><br>
     </div>
     <br><br>
@@ -20,6 +21,33 @@
 
 export default {
  name: "App",
+     methods:{
+        onClick: function (){
+            this.$emit('notification', {'user_id':'1', 'text':'בקשת פוליסה', 'time':'1hr ago'})
+            let toast = this.$toasted.show("לקוח מעוניין בפוליסה חדשה", { 
+                theme: "toasted-primary", 
+                type: "info",
+                position: "top-right",
+                keepOnHover: true, 
+                duration : 5000,
+                action: [
+                {
+                    text : 'מעבר לבקשה',
+                    onClick : (e, toastObject) => {
+                        console.log("clicked on notification");
+                    }
+                },
+                {
+                    text : 'סגור חלון',
+                    onClick : (e, toastObject) => {
+                        toastObject.goAway(0);
+                    }
+                }
+                ]
+                
+            });
+        }
+    }
  }
 </script>
 <style>

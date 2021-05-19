@@ -47,7 +47,7 @@
                     <td>{{ row.id }}</td>  
                     <td>{{ row.ActionName }}</td>              
                     <td>{{ row.Status }}</td>    
-                    <td><b-button>טפל</b-button></td>          
+                    <td><b-button v-on:click='onClick'>טפל</b-button></td>          
                 </template>
                     <template v-slot:no-data>
                 <span>No data</span>
@@ -79,7 +79,34 @@ export default {
             {'id': '4', 'ActionName': 'Withdraw4', 'Status': 0}
             
         ]
-    })
+    }),
+    methods:{
+        onClick: function (){
+            console.log("t")
+            let toast = this.$toasted.show("לקוח מעוניין בפוליסה חדשה", { 
+                theme: "toasted-primary", 
+                type: "info",
+                position: "top-right",
+                keepOnHover: true, 
+                duration : 5000,
+                action: [
+                {
+                    text : 'מעבר לבקשה',
+                    onClick : (e, toastObject) => {
+                        console.log("clicked on notification");
+                    }
+                },
+                {
+                    text : 'סגור חלון',
+                    onClick : (e, toastObject) => {
+                        toastObject.goAway(0);
+                    }
+                }
+                ]
+                
+            });
+        }
+    }
 }
 </script>
 
