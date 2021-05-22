@@ -18,12 +18,14 @@
 </template>
 
 <script>
+import DB from '../DB'
 
 export default {
  name: "App",
      methods:{
         onClick: function (){
             this.$emit('notification', {'user_id':'1', 'text':'בקשת פוליסה', 'time':'1hr ago'})
+            DB.action_details.push({'id': '1', 'ActionName': 'הפקדה לאלטושל', 'Status': 0})
             let toast = this.$toasted.show("לקוח מעוניין בפוליסה חדשה", { 
                 theme: "toasted-primary", 
                 type: "info",

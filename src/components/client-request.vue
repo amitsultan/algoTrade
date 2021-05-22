@@ -1,32 +1,30 @@
 <template>
     <div class="container shadow-lg p-3 mb-5 bg-white rounded">
-        <h>בחירת עובד במוצר בעת הצטרפות או החלפת מוצרים.</h>
         <div class="container shadow-lg p-3 mb-5 bg-white  user_details_div">
             <div class="user_details_column">
                 <span>
-                    First name: <a>Amit</a>
+                    שם פרטי: <a>{{ user_details.fname }}</a>
                 </span>
                 <span>
-                    Last name: <a>Gura</a>
+                    שם משפחה: <a>{{ user_details.lname }}</a>
                 </span>
                 <span>
-                    ID: <a>205975444</a>
+                    ת''ז': <a>{{ user_details.id_number }}</a>
                 </span>
             </div>
             <div class="user_details_column">
                 <span>
-                    Email: <a>Amit</a>
+                    פלאפון: <a>{{ user_details.phone_number }}</a>
                 </span>
                 <span>
-                    Phone: <a>Gura</a>
+                    תאריך לידה: <a>{{ user_details.bday }}</a>
                 </span>
                 <span>
-                    ID: <a>205975444</a>
+                    תפקיד: <a>{{ user_details.rank }}</a>
                 </span>
             </div>
         </div>
         <div class="container shadow-lg p-3 mb-5 bg-white  user_actions_div">
-            <h>Helo</h>
             <TableView
                 :key="action_details.length"
                 v-if='action_details != []'
@@ -44,9 +42,10 @@
                 css-style="my-css-style"
             >
                 <template v-slot:items="{ row }">
-                    <td>{{ row.id }}</td>  
                     <td>{{ row.ActionName }}</td>              
-                    <td>{{ row.Status }}</td>    
+                    <td>{{ row.recived_date }}</td>    
+                    <td>{{ row.closed_date }}</td>    
+                    <td>{{ row.Status == 0 ? 'לא טופל' : 'טופל' }}</td>    
                     <td><b-button v-on:click='onClick'>טפל</b-button></td>          
                 </template>
                     <template v-slot:no-data>
@@ -60,26 +59,31 @@
 
 <script>
 import TableView from '../components/TableView'
+import { users, action_details } from '../DB'
+
 
 export default {
     components:{
         TableView
     },
+    props:{
+        user_id: String
+    }
+    ,
     data: () => ({
         table_headers: [
-                {label:"ID", field:"id", sortable:true, type:"String"},
-                {label:"ActionName", field:"ActionName", sortable:false, type:"String"},
-                {label:"Status", field:"Status", sortable:true, type:"Number"},
-                {label:"Action", field:"action", sortable:true, type:"Number"}
+                {label:"שם הפעולה", field:"ActionName", sortable:false, type:"String"},
+                {label:"תאריך פתיחה", field:"recived_date", sortable:true, type:"String"},
+                {label:"תאריך סגירה", field:"closed_date", sortable:true, type:"String"},
+                {label:"מצב", field:"Status", sortable:true, type:"Number"},
+                {label:"פעולות", field:"action", sortable:true, type:"Number"}
         ],
-        action_details: [
-            {'id': '1', 'ActionName': 'הפקדה לאלטושל', 'Status': 0},
-            {'id': '2', 'ActionName': 'Withdraw2', 'Status': 1},
-            {'id': '3', 'ActionName': 'Withdraw3', 'Status': 1},
-            {'id': '4', 'ActionName': 'Withdraw4', 'Status': 0}
-            
-        ]
+        user_details: {},
+        action_details: []
     }),
+    computed:{
+
+    },
     methods:{
         onClick: function (){
             console.log("t")
@@ -106,6 +110,26 @@ export default {
                 
             });
         }
+    },
+    mounted: function() {
+        users.forEach(element => {
+            if(element.user_id == this.user_id){
+                this.user_details = {
+                    'email': element.email,
+                    'fname':  element.fname,
+                    'lname': element.lname,
+                    'rank':element.rank,
+                    'bday': element.bday,
+                    'phone_number': element.phone_number,
+                    'id_number': element.id_number
+                }
+            }
+        });
+        action_details.forEach(element => {
+            if(element.user_id == this.user_id){
+                this.action_details.push(element)
+            }
+        })
     }
 }
 </script>

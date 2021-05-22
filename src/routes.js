@@ -21,19 +21,15 @@ const routes = [
     component: () => import("./pages/Login-Page"),
   },
   {
-    path: "/notifications",
-    name: "clinetRequests",
-    component: () => import("./pages/client-request"),
-  },
-  {
-    path: "/notificationsS",
-    name: "clinetRequestsS",
-    component: () => import("./pages/client-requestS"),
-  },
-  {
     path: "/Register",
     name: "register",
     component: () => import("./pages/Register-Page"),
+  },
+    {
+    path: "/EmployeeRequests/:user_id",
+    name: "employeePage",
+    component: () => import("./pages/Employee-Page"),
+    props: true
   },
   {
     path: "/About",

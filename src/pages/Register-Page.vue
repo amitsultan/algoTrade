@@ -1,70 +1,70 @@
 <template>
 <div class="container shadow-lg p-3 mb-5 bg-white rounded">
-    <h1 class="title">Register</h1>
+    <h1 class="title">הרשמה</h1>
     <b-form @submit.prevent="onRegister" @reset.prevent="onReset">
 
-        <b-form-group id="input-group-email" label-cols-sm="3" label="Email:" label-for="email">
+        <b-form-group id="input-group-email" label-cols-sm="3" label="אימייל:" label-for="email">
             <b-form-input id="email" type="text" v-model="$v.form.email.$model" :state="validateState('email')"></b-form-input>
             <b-form-invalid-feedback v-if="!$v.form.email.required">
-                Email is required
+                נא להכניס אימייל
             </b-form-invalid-feedback>
             <b-form-invalid-feedback v-else-if="!$v.form.email.valid">
-                Email must be vaild! (Exmaple: some@domain.com)
+                נא להכניס אימייל תקין (דוגמא: some@domain.com)
             </b-form-invalid-feedback>
         </b-form-group>
 
-        <b-form-group id="input-group-first-name" label-cols-sm="3" label="First name:" label-for="firstname">
+        <b-form-group id="input-group-first-name" label-cols-sm="3" label="שם פרטי:" label-for="firstname">
             <b-form-input id="firstname" v-model="$v.form.firstName.$model" type="text" :state="validateState('firstName')"></b-form-input>
             <b-form-invalid-feedback v-if="!$v.form.firstName.required">
-                First name is required
+                נא להכניס שם פרטי
             </b-form-invalid-feedback>
         </b-form-group>
 
-        <b-form-group id="input-group-last-name" label-cols-sm="3" label="Last name:" label-for="lastname">
+        <b-form-group id="input-group-last-name" label-cols-sm="3" label="שם משפחה:" label-for="lastname">
             <b-form-input id="lastname" v-model="$v.form.lastName.$model" type="text" :state="validateState('lastName')"></b-form-input>
             <b-form-invalid-feedback v-if="!$v.form.lastName.required">
-                Last name is required
+               נא להכניס שם משפחה
             </b-form-invalid-feedback>
         </b-form-group>
-        <b-form-group id="input-group-Password" label-cols-sm="3" label="Password:" label-for="password">
+        <b-form-group id="input-group-Password" label-cols-sm="3" label="סיסמא:" label-for="password">
             <b-form-input id="password" type="password" autocomplete="new-password" v-model="$v.form.password.$model" :state="validateState('password')"></b-form-input>
             <b-form-invalid-feedback v-if="!$v.form.password.required">
-                Password is required
+                נא לבחור סיסמא
             </b-form-invalid-feedback>
             <b-form-text v-else-if="$v.form.password.$error" text-variant="info">
-                Your password should be <strong>strong</strong>. <br />
-                For that, your password should be also:
+                הסיסמה צריכה להיות <strong>חזקה</strong>. <br />
+                עבור זה הסיסמא צריכה:
             </b-form-text>
             <b-form-invalid-feedback v-if="$v.form.password.required && !$v.form.password.length">
-                Have length between 5-10 characters long
+               באורך של בין 5-10 תווים
             </b-form-invalid-feedback>
             <b-form-invalid-feedback v-else-if="!$v.form.password.regex">
-                Password must contain atleast one character, number and special character
+                על הסיסמה להכיל מספרים ולפחות אות אחת גדולה וקטנה וסימן מיוחד.
             </b-form-invalid-feedback>
         </b-form-group>
 
-        <b-form-group id="input-group-confirmedPassword" label-cols-sm="3" label="Confirm Password:" label-for="confirmedPassword">
+        <b-form-group id="input-group-confirmedPassword" label-cols-sm="3" label="אימות סיסמא:" label-for="confirmedPassword">
             <b-form-input id="confirmedPassword" type="password" v-model="$v.form.confirmedPassword.$model" :state="validateState('confirmedPassword')"></b-form-input>
             <b-form-invalid-feedback v-if="!$v.form.confirmedPassword.required">
-                Password confirmation is required
+                נא לוודא את הסיסמה
             </b-form-invalid-feedback>
             <b-form-invalid-feedback v-else-if="!$v.form.confirmedPassword.sameAsPassword">
-                The confirmed password is not equal to the original password
+                הסיסמאות אינן זהות
             </b-form-invalid-feedback>
         </b-form-group>
 
         <div class='buttons'>
 
-            <b-button type="reset" variant="danger" style="width:240px;margin-right:5px;">Reset</b-button>
-            <b-button type="submit" :disabled="clickButton" variant="primary" style="width:240px; margin-left:5px;">Register</b-button>
+            <b-button type="reset" variant="danger" style="width:240px;margin-right:5px;">איפוס</b-button>
+            <b-button type="submit" :disabled="clickButton" variant="primary" style="width:240px; margin-left:5px;">הרשמה</b-button>
         </div>
         <div class="mt-2">
-            You have an account already?
-            <router-link to="login"> Log in here</router-link>
+            כבר רשום?
+            <router-link to="login"> התחבר כאן</router-link>
         </div>
     </b-form>
     <b-alert class="mt-2" v-if="form.submitError" variant="warning" dismissible show>
-        Register failed: {{ form.submitError }}
+        הרשמה נכשלה: {{ form.submitError }}
     </b-alert>
     <!-- <b-card class="mt-3 md-3" header="Form Data Result">
       <pre class="m-0"><strong>form:</strong> {{ form }}</pre>

@@ -1,11 +1,11 @@
 <template>
   <div class="container shadow-lg p-3 mb-5 bg-white rounded">
-    <h1 class="title">Login</h1>
+    <h1 class="title">התחברות</h1>
     <b-form @submit.prevent="onLogin">
       <b-form-group
         id="input-group-email"
         label-cols-sm="3"
-        label="Email:"
+        label="אימייל:"
         label-for="Email"
       >
         <b-form-input
@@ -15,14 +15,14 @@
           :state="validateState('email')"
         ></b-form-input>
         <b-form-invalid-feedback>
-          email is required
+          נא להכניס אימייל
         </b-form-invalid-feedback>
       </b-form-group>
 
       <b-form-group
         id="input-group-Password"
         label-cols-sm="3"
-        label="Password:"
+        label="סיסמא:"
         label-for="Password"
       >
         <b-form-input
@@ -32,7 +32,7 @@
           :state="validateState('password')"
         ></b-form-input>
         <b-form-invalid-feedback>
-          Password is required
+          נא להכניס סיסמא
         </b-form-invalid-feedback>
       </b-form-group>
 
@@ -42,12 +42,12 @@
         style="width:100px;display:block;"
         class="mx-auto w-100"
         :disabled= "clickButton"
-        >Login</b-button
+        >התחברות</b-button
       >
 
       <div class="mt-2">
-        Do not have an account yet?
-        <router-link to="register"> Register in here</router-link>
+        עדיין לא רשום?
+        <router-link to="register">הרשם כאן</router-link>
       </div>
     </b-form>
     <b-alert
@@ -57,18 +57,15 @@
       dismissible
       show
     >
-      Login failed: {{ form.submitError }}
+      התחברות נכשלה {{ form.submitError }}
     </b-alert>
   </div>
 </template>
 
 <script>
-let users = [{'email': 'manager@gmail.com',
-          'password': '1234',
-          'fname': 'ziv',
-          'lname': 'sultan',
-          'rank':'admin'}]
 import { required } from "vuelidate/lib/validators";
+import { users } from '../DB';
+
 export default {
   data() {
     return {
@@ -96,11 +93,6 @@ export default {
       return $dirty ? !$error : null;
     },
     async Login() {
-      users = [{'email': 'manager@gmail.com',
-          'password': '1234',
-          'fname': 'ziv',
-          'lname': 'sultan',
-          'rank':'admin'}]
         let email = this.form.email;
         let password = this.form.password;
         let isFound = false;
