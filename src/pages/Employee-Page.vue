@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="employee-page">
       <clientRequest :user_id='user_id'></clientRequest>
   </div>
 </template>
