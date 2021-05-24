@@ -1,6 +1,12 @@
 <template>
-    <div class="container shadow-lg p-3 mb-5 bg-white rounded">
-        <div class="container shadow-lg p-3 mb-5 bg-white  user_details_div">
+    <div class="p-3">
+        <div  class="container shadow-lg header">
+            <span>
+                    <p> פרטי העובד </p>   
+            </span>
+        </div>
+        <div class="container shadow-lg p-3 mb-5 user_details_div">
+        
             <div class="user_details_column">
                 <span>
                     שם פרטי: <a>{{ user_details.fname }}</a>
@@ -24,7 +30,12 @@
                 </span>
             </div>
         </div>
-        <div class="container shadow-lg p-3 mb-5 bg-white  user_actions_div">
+        <div class="container shadow-lg p-3 mb-5  user_actions_div">
+         <div  class="container shadow-lg header">
+            <span>
+                    <p> היסטוריית פעולות עבור העובד </p>   
+            </span>
+        </div>
             <TableView
                 :key="action_details.length"
                 v-if='action_details != []'
@@ -136,6 +147,7 @@ export default {
 
 
 <style lang="scss" scoped>
+
 .user_details_div{
     display: flex;
     flex-direction: row;
@@ -145,4 +157,13 @@ export default {
     display: flex;
     flex-direction: column;
 }
+
+
+.header{
+    text-align: right;
+    color: white;
+    background-color: #343a40;
+    font-size: 1em;
+}
+
 </style>

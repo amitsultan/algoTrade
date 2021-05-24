@@ -1,6 +1,7 @@
 <template>
   <div class="custom-style ozn-component" :class="cssStyle"> 
     <table class="ozn-table">
+      
       <thead>
         <tr>
           <th 
@@ -261,15 +262,16 @@ export default {
   .ozn-table {
     border-collapse: collapse;
     width: 100%;
+    text-align: right; 
     thead {
       th { 
         border-bottom: 1px solid #ffffff;
         padding: 0 10px;
         height: 48px;
-        text-align: left; 
+        text-align: right; 
         font-size: 1em; 
         color: #fff;
-        background-color: #7cc3fd; 
+        background-color: #989898; 
         cursor: pointer; 
         &:hover{
           span{
