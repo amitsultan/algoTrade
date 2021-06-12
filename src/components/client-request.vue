@@ -55,7 +55,7 @@
 					<td>{{ row.closed_date }}</td>
 					<td>{{ row.Status == 0 ? 'לא טופל' : 'טופל' }}</td>
 					<td>
-						<b-button v-on:click='onClick'>טפל</b-button>
+						<b-button v-on:click='onClick()'>טפל</b-button>
 					</td>
 				</template>
 				<template v-slot:no-data>
@@ -91,7 +91,8 @@ export default {
 		action_details: [],
 		extra_options: [
 			{title: 'ניוד של כספי פיצויים'},
-			{title: 'יציאת עובד לחל"ת / חל"ד'}
+			{title: 'יציאת עובד לחל"ת / חל"ד'},
+			{title: 'ניהול עזיבת עובד'},
 		]
 	}),
 	computed: {	},
@@ -114,29 +115,8 @@ export default {
 			});
 		},
 		onClick: function () {
-			console.log('t');
-			let toast = this.$toasted.show('לקוח מעוניין בפוליסה חדשה', {
-				theme: 'toasted-primary',
-				type: 'info',
-				position: 'top-right',
-				keepOnHover: true,
-				duration: 5000,
-				action: [
-					{
-						text: 'מעבר לבקשה',
-						onClick: (e, toastObject) => {
-							console.log('clicked on notification');
-						}
-					},
-					{
-						text: 'סגור חלון',
-						onClick: (e, toastObject) => {
-							toastObject.goAway(0);
-						}
-					}
-				]
-
-			});
+			console.log("test")
+			this.$router.push("/EmployeLeave");
 		}
 	},
 	mounted: function () {

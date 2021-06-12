@@ -5,6 +5,8 @@ action_details = [
             {'user_id': '4', 'ActionName': 'הפקדה לאלטושלר', 'Status': 1,'recived_date': '1/1/1995', 'closed_date': '2/7/2021',  'handler_id': '1'},
 ]
 
+user_not = ['bullshitttttt']
+
 users = [
     {
     'user_id': '1',
