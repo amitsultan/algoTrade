@@ -66,7 +66,7 @@
         methods: {
             actionHandler: function () {
 			setTimeout( () => {
-                if (this.index < this.actions.length){
+                if (this.index < this.actions.length - 1){
                     this.index++
                     this.actionHandler()
                 }

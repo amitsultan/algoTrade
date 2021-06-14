@@ -71,6 +71,10 @@ const routes = [
   path: "/EmployeeMoney",
   name: "EmployeeMoney",
   component: () => import("./pages/EmployeeMoney"),
+},{
+  path: "/EmployeeClosure",
+  name: "EmployeeClosure",
+  component: () => import("./pages/EmployeeNextJob-page"),
 },
   {
     path: "/Contact",
