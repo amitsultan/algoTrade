@@ -1,24 +1,16 @@
-# cell-death
+# PainCya System
+
+Environment - Visual Studio Code
 
 ## Project setup
-```
-npm install
-```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+1. clone repository :
+ - In Visual Stuidop Code, Press F1 to display the command palette
+ - At the command palette prompt, enter gitcl , select the Git: Clone command, and press Enter.
+ - enter a GitHub repository url, then press Enter
+ 
+2. npm install
 
-### Compiles and minifies for production
-```
-npm run build
-```
+3.npm run serve
 
-### Lints and fixes files
-```
-npm run lint
-```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
