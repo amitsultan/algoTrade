@@ -32,10 +32,50 @@ const routes = [
     props: true
   },
   {
+    path: "/EmployeLeave",
+    name: "employeeLeavePage",
+    component: () => import("./pages/EmployeeLeave"),
+    props: true
+  },
+  {
+  path: "/CollectingData",
+  name: "CollectingData",
+  component: () => import("./pages/CollectingDataPage"),
+  },
+  {
+    path: "/ManagerDecisions",
+    name: "ManagerDecisions",
+    component: () => import("./pages/ManagerDecisions"),
+  },
+  {
     path: "/About",
     name: "AboutPage",
-    component: () => import("./pages/About-Page"),
+    component: () => import("./pages/About-Page")
   },
+  {
+    path: "/LeavingAction",
+    name: "LeavingAction",
+    component: () => import("./pages/LeavingAction"),
+  },
+  {
+    path: "/RoboAdvising",
+    name: "RoboAdvising",
+    component: () => import("./pages/RoboAdvising"),
+  },
+  {
+    path: "/EmployeeDecisions",
+    name: "EmployeeDecisions",
+    component: () => import("./pages/EmployeeDecisions"),
+  },
+{
+  path: "/EmployeeMoney",
+  name: "EmployeeMoney",
+  component: () => import("./pages/EmployeeMoney"),
+},{
+  path: "/EmployeeClosure",
+  name: "EmployeeClosure",
+  component: () => import("./pages/EmployeeNextJob-page"),
+},
   {
     path: "/Contact",
     name: "ContactPage",

@@ -1,6 +1,5 @@
 <template>
-  <div>
-      <h1>{{user_id}}</h1>
+  <div class="employee-page">
       <clientRequest :user_id='user_id'></clientRequest>
   </div>
 </template>

@@ -7,7 +7,9 @@ import VueCookies from "vue-cookies";
 import routes from "./routes";
 import Vuelidate from "vuelidate";
 import Toasted from 'vue-toasted';
+import VueEllipseProgress from 'vue-ellipse-progress';
 
+Vue.use(VueEllipseProgress);
 Vue.use(Toasted)
 Vue.use(VueRouter);
 Vue.use(VueCookies);
