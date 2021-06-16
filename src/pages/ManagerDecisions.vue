@@ -6,10 +6,15 @@
           </div>
           <div>
               <label><input type="checkbox">האם אתה מאשר את סך הפיצויים לעובד ? </label>
+              <br>
+              <br>
+              <br>
           </div>
-          <b-button v-on:click='onClick()'>אישור</b-button>
-          <b-button v-on:click='onClick()'>ביטול</b-button>
-
+          <div class="center">
+          <b-button variant="success" v-on:click='onClick()'>אישור</b-button>
+          &nbsp;
+          <b-button variant="danger" v-on:click='onClick()'>ביטול</b-button>
+          </div>
 
 </div>
 </template>
@@ -35,5 +40,7 @@ export default {
 </script>
 
 <style>
-
+.center{
+      width: 30%;
+}
 </style>

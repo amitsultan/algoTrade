@@ -10,9 +10,11 @@
 
             </ul>  
             <br>
+          <div class="center">
           <b-button variant="success" v-on:click='accept()'>אישור</b-button>
+           &nbsp;
           <b-button variant="danger" v-on:click='decline()'> ביטול</b-button>
-
+        </div>
 
 
 

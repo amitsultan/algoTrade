@@ -14,8 +14,11 @@
         </div>
       </div>
         <br>
+        <div class="center">
         <b-button variant="success" v-on:click='onClick()'>סיום</b-button>
+            &nbsp;
         <b-button variant="danger">ביטול</b-button>
+        </div>
   </div>
   </div>
 </template>

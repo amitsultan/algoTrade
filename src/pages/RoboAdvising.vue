@@ -3,13 +3,17 @@
   <div v-if='!showLoading'>
       <label> האם ברצונך שהמערכת תסייע לך מה לעשות עם הכסף שברשותך ? </label>
       <br>
+      <div class="center">
         <b-button variant="success" v-on:click='onClick()'>מאשר</b-button>
+         &nbsp;
         <b-button variant="danger" v-on:click='onClick()'>לא מעוניין</b-button>
+      </div>
   </div>
-  <div       v-if='showLoading'>
+  <div v-if='showLoading'>
     <label>{{actions[index]}}</label>
     <br>
     <br>
+    <div class="center">
     <vue-ellipse-progress 
       :data="circles"                    
       :progress="progress"
@@ -37,13 +41,15 @@
       
       <span slot="legend-value">/200</span>
     </vue-ellipse-progress>
-
+    </div>
   </div>
   </div>
 </template>
 
 <script>
+import Card from '../components/Card.vue';
 export default {
+  components: { },
   data() {
     return {
         showLoading: false,
@@ -78,5 +84,8 @@ export default {
 </script>
 
 <style>
-
+.center{
+      width: 40%;
+       margin: auto;
+}
 </style>
